@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="dongdongtong&#39;s blog">
 <meta property="og:description" content="Some introductions of functions and their derivative formulas.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-26T21:07:47.879Z">
+<meta property="og:updated_time" content="2019-10-26T21:30:00.092Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>Equation Summary | dongdongtong's blog</title>
+  <title>Equation Summary | dongdongtong's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -143,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -345,28 +345,35 @@
 
       
         <a id="more"></a>
-
 <h2 id="SoftMax"><a href="#SoftMax" class="headerlink" title="SoftMax"></a>SoftMax</h2><p>SoftMax is a function that mapping your vector which usually a score vector(one datapoint) or scores matrix(n datapoints) for your datapoints.</p>
 <h3 id="SoftMax-function"><a href="#SoftMax-function" class="headerlink" title="SoftMax function"></a>SoftMax function</h3><p>If you have a C-dimmension score vector, which means you have C classes to be classified, the softmax will apply to each entry of your vector.</p>
-<p>$$ SoftMax(score) = \frac{e^{s_i}}{\sum_{j=1}^{C}e^{s_j}}, i = { 1, 2, …, C }$$<br><strong>where i is each entry of your score</strong>.</p>
+<script type="math/tex; mode=display">SoftMax(score) = \frac{e^{s_i}}{\sum_{j=1}^{C}e^{s_j}}, i = \{ 1, 2, ..., C \}</script><p><strong>where i is each entry of your score</strong>.</p>
 <h3 id="SoftMax-Loss"><a href="#SoftMax-Loss" class="headerlink" title="SoftMax Loss"></a>SoftMax Loss</h3><p>A softmax loss is defiend as below:</p>
-<p>$$ L_{x_i} = -log \frac{e^{s_i}}{\sum_{j=1}^{C}e^{s_j}} $$<br><strong>where i is the label index of your $x_i$ datapoint</strong>.</p>
+<script type="math/tex; mode=display">L_{x_i} = -log \frac{e^{s_i}}{\sum_{j=1}^{C}e^{s_j}}</script><p><strong>where i is the label index of your $x_i$ datapoint</strong>.</p>
 <h3 id="Derivative-formula"><a href="#Derivative-formula" class="headerlink" title="Derivative formula"></a>Derivative formula</h3><p>The derivative of <strong>a softmax loss</strong>, not the softmax function is shown as below:</p>
-<p>$$ \frac{\partial L_{x_i}}{\partial score} = SoftMax(score) - e(i) $$<br>where e(i) is a “one-hot” vector, consisting of all 0 except for a 1 at position i.</p>
+<script type="math/tex; mode=display">\frac{\partial L_{x_i}}{\partial score} = SoftMax(score) - e(i)</script><p>where e(i) is a “one-hot” vector, consisting of all 0 except for a 1 at position i.</p>
 <h2 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h2><h3 id="Sigmoid-function"><a href="#Sigmoid-function" class="headerlink" title="Sigmoid function"></a>Sigmoid function</h3><p>Sigmoid is a <strong>function</strong> that you can obtain an <strong>element-wise</strong> mapping from origin input to a 0~1 output.</p>
-<p>$$ Sigmoid(x_{ij}) = \frac{1}{1 + e^{-x_{ij}}} , x_{ij}\in X$$<br>Note that X is a M × N matrix.</p>
+<script type="math/tex; mode=display">Sigmoid(x_{ij}) = \frac{1}{1 + e^{-x_{ij}}} , x_{ij}\in X</script><p>Note that X is a M × N matrix.</p>
 <h3 id="Sigmoid-function-Derivative"><a href="#Sigmoid-function-Derivative" class="headerlink" title="Sigmoid function Derivative"></a>Sigmoid function Derivative</h3><p>Note that the derivative formula below uncovers the derivative of sigmoid function but <strong>not a sigmoid loss</strong>.</p>
-<p>$$ \frac{\partial Loss}{\partial X} =<br>\frac{\partial Loss}{\partial Sigmoid(X)} \bigodot<br>\frac{\partial Sigmoid(X)}{\partial X} =<br>dout \bigodot (1 - Sigmoid(X)) \bigodot Sigmoid(X) $$<br>where dout is the upstream derivative which is derivative of Loss with respect to sigmoid output.</p>
+<script type="math/tex; mode=display">\frac{\partial Loss}{\partial X} =
+\frac{\partial Loss}{\partial Sigmoid(X)} \bigodot
+\frac{\partial Sigmoid(X)}{\partial X} =
+dout \bigodot (1 - Sigmoid(X)) \bigodot Sigmoid(X)</script><p>where dout is the upstream derivative which is derivative of Loss with respect to sigmoid output.</p>
 <p>and $\bigodot$ is a element-wise times sign.</p>
 <h3 id="Sigmoid-function-loss"><a href="#Sigmoid-function-loss" class="headerlink" title="Sigmoid function loss"></a>Sigmoid function loss</h3><p>A sigmoid function loss is defined as below:</p>
-<p>$$L_{x_i} = \begin{cases}<br>-log(sigm(x_i)) &amp; y_i = 1 \<br>-log(1 - sigm(x_i)) &amp; y_i = 0<br>\end{cases}$$</p>
-<p>Note that the $x_i$ is a datapoint which is a m-dimension <strong>vector</strong> and $y_{i}$ is the label $x_i$ have.</p>
+<script type="math/tex; mode=display">L_{x_i} = \begin{cases}
+-log(sigm(x_i)) & y_i = 1 \\
+-log(1 - sigm(x_i)) & y_i = 0
+\end{cases}</script><p>Note that the $x_i$ is a datapoint which is a m-dimension <strong>vector</strong> and $y_{i}$ is the label $x_i$ have.</p>
 <p>For a short-hand script, you can combine the two fomulas above to one equation:</p>
-<p>$$ L_{x_i} = y_i * log \frac{1}{sigm(x_i)} +<br>(1 - y_i) * log \frac{1}{1 - sigm(x_i)} $$</p>
-<p>One note should be kept in your mind is that this equation is  a convex function.</p>
+<script type="math/tex; mode=display">L_{x_i} = y_i * log \frac{1}{sigm(x_i)} +
+(1 - y_i) * log \frac{1}{1 - sigm(x_i)}</script><p>One note should be kept in your mind is that this equation is  a convex function.</p>
 <h3 id="Sigmoid-function-loss-derivative"><a href="#Sigmoid-function-loss-derivative" class="headerlink" title="Sigmoid function loss derivative"></a>Sigmoid function loss derivative</h3><p>Note that the derivative depends on the value of $y_i$</p>
-<p>$$ \frac{\partial L_{x_i}}{\partial x_i} =<br>\begin{cases}<br>-(1 - sigm(x_i)) &amp; y_i = 1 \<br>sigm(x_i) &amp; y_i = 0<br>\end{cases}$$</p>
-
+<script type="math/tex; mode=display">\frac{\partial L_{x_i}}{\partial x_i} =
+\begin{cases}
+-(1 - sigm(x_i)) & y_i = 1 \\
+sigm(x_i) & y_i = 0
+\end{cases}</script>
       
     </div>
     
@@ -740,6 +747,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
